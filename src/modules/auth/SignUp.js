@@ -29,6 +29,7 @@ const SignUp = (props) => {
                     password: "",
                     about: ""
                 })
+                ToastAndroid.showWithGravityAndOffset('Registered Successfully!', ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
                 props.navigation.navigate("Login");
             }
         } catch (error) {
