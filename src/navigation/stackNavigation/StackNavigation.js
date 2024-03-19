@@ -5,6 +5,8 @@ import Dashboard from '../../modules/dashboard/Dashboard';
 import Login from '../../modules/auth/Login';
 import Splash from '../../modules/splash/Splash';
 import SignUp from '../../modules/auth/SignUp';
+import ChatScreen from '../../modules/chatting/ChatScreen';
+import UsersList from '../../modules/usersList/UsersList';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ function StackNavigation() {
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
                 <Stack.Screen name="Dashboard" component={Dashboard} options={{ headerShown: false }} />
+                <Stack.Screen name="ChatScreen" component={ChatScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="UsersList" component={UsersList} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

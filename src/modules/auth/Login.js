@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet, Dimensions, ToastAndroid } from 'react-native'
 import Space from '../../components/Space';
 import Button from '../../components/Button';
-import { gettingUserData } from '../../firebase/Firebase_APIs';
+import { gettingUserData } from '../../services/firebase/Firebase_APIs';
+import { storeLoginDetail } from '../../store/storeLoginDetails/LoginDetails';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -15,20 +16,34 @@ const Login = (props) => {
 
     const handleLogin = async () => {
         try {
+            if (loginData.mail === "" || loginData.password === "") {
+                ToastAndroid.show("Please enter mail/password", ToastAndroid.SHORT);
+                return false;
+            }
             const response = await gettingUserData(loginData.mail);
             console.log("response", response);
             if (response === null) {
-                ToastAndroid.showWithGravityAndOffset("Mail Id doesn't match!", ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
+                ToastAndroid.show("Mail Id doesn't match!", ToastAndroid.SHORT);
                 return false;
             }
             const result = Object.values(response)[0];
             console.log('result', result);
             if (result.password !== loginData.password) {
-                ToastAndroid.showWithGravityAndOffset("Password doesn't match!", ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
+                ToastAndroid.show("Password doesn't match!", ToastAndroid.LONG, ToastAndroid.SHORT);
+                return false;
             }
-            ToastAndroid.showWithGravityAndOffset("Login Successfully!", ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
+            setLoginData({
+                mail: "",
+                password: ""
+            })
+            storeLoginDetail(result);
+            ToastAndroid.show("Login Successfully!", ToastAndroid.LONG, ToastAndroid.SHORT);
+            props.navigation.reset({
+                index: 0,
+                routes: [{ name: 'Dashboard' }]
+            })
         } catch (error) {
-            ToastAndroid.showWithGravityAndOffset('Something went wrong!', ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
+            ToastAndroid.show('Something went wrong!', ToastAndroid.LONG, ToastAndroid.SHORT);
             console.log({ error });
         }
     }

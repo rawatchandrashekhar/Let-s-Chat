@@ -11,4 +11,14 @@ const gettingUserData = async (mail) => {
     return snapshot.val();
 }
 
-export { settingData, gettingUserData }
+const gettingUserList = async () => {
+    const snapshot = await db.ref("/users/").once("value");
+    return snapshot.val();
+}
+
+const creatingChatList = async (firstId, secondId, data) => {
+    const snapshot = await db.ref(`/chatlist/${firstId}/${secondId}`).update(data);
+    return snapshot
+}
+
+export { settingData, gettingUserData, gettingUserList, creatingChatList, db }

@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View, Dimensions, Text, ToastAndroid } from 'rea
 import Button from '../../components/Button'
 import Space from '../../components/Space';
 import uuid from 'react-native-uuid';
-import { settingData } from '../../firebase/Firebase_APIs';
+import { settingData } from '../../services/firebase/Firebase_APIs';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -18,8 +18,8 @@ const SignUp = (props) => {
 
     const handleSubmit = async () => {
         try {
-            if (registerData.name === "" || registerData.mail === "" || registerData.password === "") {
-                ToastAndroid.showWithGravityAndOffset('Please fill required fields!', ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
+            if (registerData.name === "" || registerData.mail === "" || registerData.password === "" || registerData.about === "") {
+                ToastAndroid.showWithGravityAndOffset('Please fill all fields!', ToastAndroid.LONG, ToastAndroid.BOTTOM, 25, 50);
             } else {
                 let data = { ...registerData, id: uuid.v4() }
                 await settingData(data);
