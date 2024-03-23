@@ -4,6 +4,7 @@ import Space from '../../components/Space';
 import Button from '../../components/Button';
 import { gettingUserData } from '../../services/firebase/Firebase_APIs';
 import { storeLoginDetail } from '../../store/storeLoginDetails/LoginDetails';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -37,6 +38,15 @@ const Login = (props) => {
                 password: ""
             })
             storeLoginDetail(result);
+            crashlytics().log('User signed in.');
+            await Promise.all([
+                crashlytics().setUserId(result.id),
+                crashlytics().setAttribute('credits', String(result.id)),
+                crashlytics().setAttributes({
+                    email: result.mail,
+                    username: result.name,
+                }),
+            ]);
             ToastAndroid.show("Login Successfully!", ToastAndroid.LONG, ToastAndroid.SHORT);
             props.navigation.reset({
                 index: 0,

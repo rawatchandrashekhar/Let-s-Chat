@@ -16,9 +16,14 @@ const gettingUserList = async () => {
     return snapshot.val();
 }
 
+const gettingChatListOnce = async (loginUserId, selectedId) => {
+    const snapshot = await db.ref(`/chatlist/${loginUserId}/${selectedId}`).once("value");
+    return snapshot.val();
+}
+
 const creatingChatList = async (firstId, secondId, data) => {
     const snapshot = await db.ref(`/chatlist/${firstId}/${secondId}`).update(data);
     return snapshot
 }
 
-export { settingData, gettingUserData, gettingUserList, creatingChatList, db }
+export { settingData, gettingUserData, gettingUserList, creatingChatList, gettingChatListOnce, db }

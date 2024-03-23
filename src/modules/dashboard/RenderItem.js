@@ -9,28 +9,9 @@ const RenderItem = ({ item, props, loginData }) => {
     const { name, lastMsg } = item;
 
     const handlePress = async (selectedData) => {
-        // const roomId = uuid.v4();
-        // const loginUserData = {
-        //     roomId,
-        //     name: loginData.name,
-        //     mail: loginData.mail,
-        //     about: loginData.about,
-        //     lastMsg: ""
-        // }
-        // const firstResponse = await creatingChatList(selectedData.id, loginData.id, loginUserData);
-        // // console.log("first response", firstResponse);
-        // const chattingUserData = {
-        //     roomId,
-        //     name: selectedData.name,
-        //     mail: selectedData.mail,
-        //     about: selectedData.about,
-        //     lastMsg: ""
-        // }
-        // const secondResponse = await creatingChatList(loginData.id, selectedData.id, chattingUserData);
-        // // console.log("secondResponse", secondResponse);
-        // props.navigation.navigate("ChatScreen", {
-        //     selectedData
-        // });
+        props.navigation.navigate("ChatScreen", {
+            selectedData
+        });
     }
 
     return (

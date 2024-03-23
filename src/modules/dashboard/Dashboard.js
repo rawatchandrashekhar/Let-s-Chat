@@ -6,6 +6,7 @@ import ET from "react-native-vector-icons/Entypo";
 import { gettingLoginDetails } from "../../store/storeLoginDetails/LoginDetails";
 import RenderItem from "./RenderItem";
 import FloatingButton from "./FloatingButton";
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export default function Dashboard(props) {
 
@@ -32,6 +33,7 @@ export default function Dashboard(props) {
 
     const handleNavigateToUsersList = () => {
         props.navigation.navigate("UsersList");
+        // crashlytics().crash()
     }
 
     return (
