@@ -7,7 +7,7 @@ import EI from "react-native-vector-icons/EvilIcons"
 const Button = ({ width, borderRadius, buttonText, isIcon, onPress }) => {
     return (
         <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={{ ...styles.container, width: width, borderRadius: borderRadius }}>
-            {isIcon ? <View style={styles.iconContainer}><EI name='chevron-right' size={60} color="#fff" style={styles.icon_style} /></View> :
+            {isIcon ? <View style={styles.iconContainer}><EI name='chevron-right' size={50} color="#fff" style={styles.icon_style} /></View> :
                 <Text style={styles.btnTextStyle}>{buttonText}</Text>}
         </TouchableOpacity>
     )
@@ -37,9 +37,13 @@ const styles = StyleSheet.create({
         fontWeight: "600"
     },
     iconContainer: {
-        alignSelf: "center"
+        alignItems: "center",
+        justifyContent: "center"
     },
     icon_style: {
-        bottom: 7
+        // bottom: 7,
+        width: 50,
+        height: 50,
+        // backgroundColor: "pink"
     }
 })

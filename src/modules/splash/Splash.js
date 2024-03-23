@@ -9,9 +9,15 @@ const Splash = (props) => {
             async function temp() {
                 const loginUserDetails = await gettingLoginDetails();
                 if (loginUserDetails) {
-                    props.navigation.navigate('Dashboard');
+                    props.navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'Dashboard' }]
+                    })
                 } else {
-                    props.navigation.navigate('Login');
+                    props.navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'Login' }]
+                    })
                 }
             }
             temp();
