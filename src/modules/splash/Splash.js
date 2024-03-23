@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { gettingLoginDetails } from '../../store/storeLoginDetails/LoginDetails';
 
 const Splash = (props) => {
 
     useEffect(() => {
         let timeOut = setTimeout(() => {
-            props.navigation.navigate('Login');
+            async function temp() {
+                const loginUserDetails = await gettingLoginDetails();
+                if (loginUserDetails) {
+                    props.navigation.navigate('Dashboard');
+                } else {
+                    props.navigation.navigate('Login');
+                }
+            }
+            temp();
         }, 2000);
 
         return () => {

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "43397705464",
+    "firebase_url": "https://let-s-chat-9f65b-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "let-s-chat-9f65b",
     "storage_bucket": "let-s-chat-9f65b.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.lets_chat"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "43397705464-2q5riqdtknutrp7c1ba669rsvtf2k0o8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lets_chat",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "43397705464-s1j0ueqbleud7heiqlpp5ch2lc36ku39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB75dpVit8AAsSHTh1WDxkaoytXVcY_B0M"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43397705464-s1j0ueqbleud7heiqlpp5ch2lc36ku39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
