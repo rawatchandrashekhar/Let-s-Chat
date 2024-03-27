@@ -20,7 +20,7 @@ const Header = ({ leftIcon, isRightIconVisible, isDashboardTitleVisible, another
         useCallback(
             () => {
                 fetchingGreetMessage();
-            },[],
+            }, [],
         ))
 
     const fetchingLoginDetails = async () => {
@@ -42,7 +42,10 @@ const Header = ({ leftIcon, isRightIconVisible, isDashboardTitleVisible, another
     const handleLogout = async () => {
         await resetKeyChain();
         ToastAndroid.show("Logout Successfully!", ToastAndroid.LONG, ToastAndroid.SHORT);
-        navigation.navigate("Login");
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }]
+        })
     }
 
     return (
