@@ -41,9 +41,9 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     icon_style: {
-        // bottom: 7,
-        width: 50,
-        height: 50,
+        bottom: 6,
+        // width: 50,
+        // height: 50,
         // backgroundColor: "pink"
     }
 })
